@@ -8,28 +8,18 @@ pipeline {
                 checkout scm
                   }
             }
-         stage('maven clean')
-            {
-            steps
-                {
-                  bat "mvn clean"
+         stage('Build in Docker') {
+            agent {
+                docker {
+                    image 'spring1'
+                    args '-v /.jenkins/workspace/spring1/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war -w target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war'
                 }
-             }
-        stage('maven install')
-            {
-            steps
-                {
-                  bat "mvn install"
-                }
-             }
-           
-        stage('Build image') 
-             { 
-            steps 
-                 {
-                 //sh "docker build –t spring1 ."
-                   sh 'docker.build("spring1")'
-                  }
-             }
+            }
+
+            steps {
+                sh 'pwd'
+                sh 'mvn -v'
+                sh 'mvn clean install'
+            }
     }
 }
