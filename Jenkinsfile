@@ -12,7 +12,7 @@ pipeline {
              { 
             steps 
                  {
-                 sh "Docker build –t spring1 ."
+                 sh "docker build –t spring1 ."
                   }
              }
     }
