@@ -18,7 +18,7 @@ pipeline {
       sh "docker tag springg1 springg1:latest"
       }
     }
-    
+  }
    // stage('Check Specification') {
      // steps {
        // sh "chmod o+w *"
