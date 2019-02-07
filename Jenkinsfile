@@ -9,7 +9,7 @@ pipeline {
                   }
             }
          stage('Build in Docker') {
-            agent {
+            steps {
                 docker {
                     image 'spring1'
                     args '-v /.jenkins/workspace/spring1/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war -w target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war'
