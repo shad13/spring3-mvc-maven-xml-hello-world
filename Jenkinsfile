@@ -12,7 +12,8 @@ pipeline {
              { 
             steps 
                  {
-                 sh "docker build –t spring1 ."
+                 //sh "docker build –t spring1 ."
+                   sh 'docker.build("spring1")'
                   }
              }
     }
