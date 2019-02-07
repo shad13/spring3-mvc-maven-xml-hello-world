@@ -12,14 +12,14 @@ pipeline {
             {
             steps
                 {
-                  bat "mvn test"
+                  bat "mvn clean"
                 }
              }
         stage('maven install')
             {
             steps
                 {
-                  bat "mvn package"
+                  bat "mvn install"
                 }
              }
            
