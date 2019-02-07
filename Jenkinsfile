@@ -1,15 +1,19 @@
 pipeline {
     agent any 
     stages {
-        stage('Clone repository') { 
-            steps {
+        stage('Clone repository') 
+            { 
+            steps 
+                  {
                 checkout scm
-            }
-        }
-        stage('Build image') { 
-            steps {
-                sudo Docker build –t spring1 .
-            }
-        }
+                  }
+             }
+        stage('Build image') 
+             { 
+            steps 
+                 {
+                 sh "Docker build –t spring1"
+                  }
+             }
     }
 }
