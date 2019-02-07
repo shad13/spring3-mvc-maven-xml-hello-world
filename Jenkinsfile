@@ -7,6 +7,10 @@ pipeline {
                   {
                 checkout scm
                   }
+            steps
+                {
+                    mvn clean install
+                }
              }
         stage('Build image') 
              { 
