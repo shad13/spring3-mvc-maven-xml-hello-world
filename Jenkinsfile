@@ -34,3 +34,4 @@ stage('Clone repository') {
         }
     }
 }
+}
