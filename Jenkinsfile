@@ -7,11 +7,15 @@ pipeline {
                   {
                 checkout scm
                   }
+            }
+         stage('maven clean')
+            {
             steps
                 {
                     mvn clean install
                 }
              }
+           
         stage('Build image') 
              { 
             steps 
