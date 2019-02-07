@@ -16,10 +16,13 @@ pipeline {
                 }
             }
          }
+        stage('maven')
+        {
             steps {
                 sh 'pwd'
                 sh 'mvn -v'
                 sh 'mvn clean install'
             }
-    }
+          }
+        } 
 }
