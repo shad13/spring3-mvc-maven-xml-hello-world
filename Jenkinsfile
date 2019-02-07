@@ -1,19 +1,29 @@
 pipeline {
     agent any 
     stages {
-        stage('clean') { 
+        stage('Clone repository') { 
             steps {
                 checkout scm
             }
         }
-        stage('Test') { 
+        stage('Build image') { 
             steps {
-                bat "mvn test" 
+                app = docker.build("spring1")
             }
         }
-        stage('Deploy') { 
+        stage('Test image') { 
             steps {
-                bat "mvn package"
+                app.inside {
+            sh 'echo "Tests passed"'
+        }
+                stage('Push image') { 
+            steps {
+                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                 app.push("${env.BUILD_NUMBER}")
+                 app.push("latest")
+                          }
+                  }
+        }
             }
         }
     }
